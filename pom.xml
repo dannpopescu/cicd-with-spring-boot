@@ -17,6 +17,7 @@
     <properties>
         <java.version>14</java.version>
         <docker.image.prefix>dannpopescu</docker.image.prefix>
+        <full-artifact-name>target/${project.artifactId}-${project.version}</full-artifact-name>
         <maven.deploy.skip>true</maven.deploy.skip>
     </properties>
 
@@ -84,6 +85,17 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.heroku.sdk</groupId>
+                <artifactId>heroku-maven-plugin</artifactId>
+                <version>3.0.4</version>
+                <configuration>
+                    <appName>cicd-with-spring-boot</appName>
+                    <processTypes>
+                        <web>java $JAVA_OPTS -jar -Dserver.port=$PORT ${full-artifact-name}</web>
+                    </processTypes>
+                </configuration>
             </plugin>
         </plugins>
     </build>
