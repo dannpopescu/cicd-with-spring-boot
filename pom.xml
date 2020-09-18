@@ -17,7 +17,7 @@
     <properties>
         <java.version>14</java.version>
         <docker.image.prefix>dannpopescu</docker.image.prefix>
-        <full-artifact-name>target/${project.artifactId}-${project.version}</full-artifact-name>
+        <full-artifact-name>target/${project.artifactId}-${project.version}.jar</full-artifact-name>
         <maven.deploy.skip>true</maven.deploy.skip>
     </properties>
 
